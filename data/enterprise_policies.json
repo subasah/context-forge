@@ -1,0 +1,23 @@
+[
+  {
+    "policy_id": "SEC-POL-001",
+    "title": "Data Access Control and Multi-Factor Authentication",
+    "effective_date": "2026-01-01",
+    "classification": "Confidential",
+    "content": "All engineering employees accessing production cloud environments must authenticate through hardware-based FIDO2 WebAuthn security keys. Passwords and SMS verification are strictly prohibited for production access. Any administrative privilege elevation requires dual-approver consensus and expires automatically after 4 hours. Access tokens older than 60 minutes are revoked immediately."
+  },
+  {
+    "policy_id": "SEC-POL-002",
+    "title": "Customer Data Retention and GDPR Compliance",
+    "effective_date": "2026-02-15",
+    "classification": "Internal",
+    "content": "Customer telemetry and audit logs must be retained for exactly 365 days in encrypted cold storage (AES-256-GCM). Upon receipt of a verified GDPR Article 17 erasure request (Right to be Forgotten), the Data Protection Officer must execute cryptographic deletion across all relational tables, vector indexes, and backup snapshots within 30 calendar days."
+  },
+  {
+    "policy_id": "SEC-POL-003",
+    "title": "Critical Incident Response and Breach Notification",
+    "effective_date": "2026-03-01",
+    "classification": "Critical",
+    "content": "In the event of a Severity 1 cybersecurity breach involving unauthorized exfiltration of Personal Identifiable Information (PII), the Security Incident Response Team (SIRT) must notify affected regulatory bodies and impacted enterprise customers within 72 hours of confirmation. The incident containment playbook must be initialized within 15 minutes of anomaly detection."
+  }
+]

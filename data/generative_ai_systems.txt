@@ -1,0 +1,15 @@
+Generative AI Systems & Model Context Engineering Guide
+
+1. Token Window Allocation:
+Modern Large Language Models possess finite context budgets (e.g., 4096 tokens, 8192 tokens, or 128k tokens). In production conversational agents, naive prompt appending causes context overflow crashes and astronomical inference latency. Token budgeting allocates bounded quotas across five discrete buckets:
+- Bucket A (System Prompt & Core Persona): 300 to 500 tokens. Fixed and immutable.
+- Bucket B (Task-Specific Instructions & Guardrails): 200 to 400 tokens.
+- Bucket C (Conversational Memory & User Facts): 500 to 1000 tokens. Managed via sliding window and hierarchical summaries.
+- Bucket D (Retrieved Dynamic Knowledge): 1500 to 2500 tokens. Dynamically ranked and compressed.
+- Bucket E (Reserved Completion Budget): 1024 tokens. Guaranteed space for response generation.
+
+2. Agent Context Delivery via Model Context Protocol (MCP):
+Traditional architectures blindly dump all search results into the prompt context prior to generation. In contrast, modern agentic systems employ the Model Context Protocol (MCP) to decouple tool execution and contextual resource fetching. Through MCP standard JSON-RPC interfaces, autonomous agents dynamically evaluate their own information gaps and invoke tools like `search_knowledge_base` or `fetch_chunk_details` only when additional grounding is strictly necessary. This pattern reduces prompt token overhead by up to 85% in multi-step workflows.
+
+3. Context Deduplication & Semantic Delta Compression:
+When multiple conversational turns or search passes return overlapping data, semantic deduplication compares passage hash fingerprints and cosine proximity. Redundant duplicate clauses are pruned before prompt assembly, maintaining maximum token density per dollar spent.
