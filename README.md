@@ -117,7 +117,7 @@ $$\text{Input Ranks}: [1, 2, 3, 4, 5, 6] \implies \text{Context Placement}: [1, 
 
 ### Installation
 ```bash
-git clone https://github.com/your-username/context-forge.git
+git clone https://github.com/subasah/context-forge.git
 cd context-forge
 pip install -e .
 ```
